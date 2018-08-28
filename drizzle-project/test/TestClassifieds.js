@@ -7,7 +7,8 @@ contract('Classifieds', function(accounts) {
   //***** User 1 Tests and Enrollment */
 
   // This test ensures that a user 1 gets successfully enrolled before they 
-  // can make transactions on the decentralized platform. This user is linked to account[0]
+  // can make transactions on the decentralized platform. This user is linked to account[0].
+  // This is an essential function since we want our users to be enrolled before they transact
   it("Should enroll user", function() {
     return Classifieds.deployed().then(function(instance) {
       classifiedsInstance = instance;
@@ -42,6 +43,7 @@ contract('Classifieds', function(accounts) {
     });
   });
 
+  //Ensuring that we have 2 listings by the same user which will be sold to another user
   it("Should add 1 more listing for User 1", function() {
     return Classifieds.deployed().then(function(instance) {
       classifiedsInstance = instance;
@@ -100,6 +102,7 @@ contract('Classifieds', function(accounts) {
     });
   });
 
+  //Checking that we can buy a second listing posted by user 1
   it("User2 can buy listing 2 from User1", function() {
     return Classifieds.deployed().then(function(instance) {
       classifiedsInstance = instance;
