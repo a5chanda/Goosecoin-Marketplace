@@ -2,7 +2,7 @@ pragma solidity ^ 0.4 .0;
 
 contract Classifieds {
 
-    //** Structs that are going to be used within the dApp **/
+    //****************** Structs that are going to be used within the dApp **********************/
 
     //Listing/Listing structure containing the required information for a classified 
     struct Listing{ 
@@ -36,29 +36,30 @@ contract Classifieds {
         string listingName;
         uint txID;
     }
+    //**************************************************************************************** */
     
-    uint ListingID;
-    uint[] ListingPrices;
+    
+    uint ListingID; // this keeps track of the current listing ID as well as the total number of Listings in the contract
+    
 
-    uint txID;
+    uint txID; // This keeps track of the last transactionID as well as the total number of transactions in the contract
 
     enum ListingStatus{LISTED, IN_NEGOTIATION, SOLD, NO_LONGER_FOR_SALE}
     enum userStatus{BUYER, SELLER}
 
+    // Address -> User Struct
     mapping(address => User) public allUsers; // mapping of all the users
-    mapping(uint => Listing) public allListings; // mapping of all the Listings
 
-
-    // mapping(address => Listing[]) public userListings; //mapping of user listings
-    // mapping(address => uint[]) public userListingIDs; // mapping of user's listings' IDs
-    // mapping(address => uint[]) public ListingsPurchased; // mapping of the Listing IDs purchased by a user
-    // mapping(address => uint[]) public ListingsSold;
+    // ListingID -> Listing Struct
+    mapping(uint => Listing) public allListings; // mapping of all the Listings. 
     
-    mapping(uint => Transaction) public allTransactions;
+    // TransactionID -> Transaction Struct
+    mapping(uint => Transaction) public allTransactions; // mapping of transactions
     
-
 
     // Events  
+
+    //This event gives us information of a listing when it gets added to the marketplace
     event addListingEvent(
         address indexed sellerAddress,        
         uint indexed ListingID,
@@ -67,6 +68,7 @@ contract Classifieds {
         uint ListingPrice
     );
 
+    //This event tells use the details of a transaction when a listing is bought
     event TransactionEvent(
         uint indexed txID,
         address indexed buyer,
@@ -79,11 +81,11 @@ contract Classifieds {
 
     //********** Functions ******* */
 
-    //********* Registering a user
+
+    //Registering a user to the contract
 
     function enrollUser(string firstName, string lastName, string email) public returns (bool){
         require(allUsers[msg.sender].enrolledStatus == false);
-        
         allUsers[msg.sender] = User(firstName,lastName,msg.sender,email,true, new uint[](0), new uint[](0), new uint[](0));
         return allUsers[msg.sender].enrolledStatus;
         
@@ -118,13 +120,10 @@ contract Classifieds {
         require(tempEmptyStringTest.length != 0 );
         require(allUsers[msg.sender].enrolledStatus == true);
         
-
-
-        ListingID++;
-        ListingPrices.push(price);
+        ListingID++; //increase the total number of listings
         Listing memory newListing = Listing(ListingID, ListingName, description, price, msg.sender, ListingStatus.LISTED, ListingDateTime);
 
-        allListings[ListingID] = newListing;
+        allListings[ListingID] = newListing; //mapping the current listingID to the pertaining listing struct
         allUsers[msg.sender].listingsPosted.push(ListingID);    
     } 
 
@@ -151,6 +150,7 @@ contract Classifieds {
 
     }
 
+    // Buy a listing function with the value as a parameter. This function will probably be taken out in the future
     function buyListingValue(uint listingID, uint value) public payable{
         require(allUsers[msg.sender].enrolledStatus == true);
         require(allListings[listingID].owner != msg.sender); //Make sure the buyer isn't the seller/same account
@@ -165,8 +165,8 @@ contract Classifieds {
         allUsers[msg.sender].listingsPurchased.push(listingID); // list of listings purchased by the buyer
         allUsers[ownerAddress].listingsSold.push(listingID); // list of listings sold by the owner/seller
         
-        //transaction handling
-        txID++;
+        
+        txID++; //transaction handling
         allTransactions[txID] = Transaction(msg.sender, ownerAddress, msg.value, listingID, allListings[listingID].ListingName, txID);
         
         emit TransactionEvent(txID, msg.sender, ownerAddress, listingID, allListings[listingID].ListingName, msg.value);
@@ -175,32 +175,33 @@ contract Classifieds {
 
 
 
-    //******** Getter Functions 
+    //******** Getter Functions ***********/
     
     //Get the info for a listing by ListingID
     function getListingInfoByID(uint listingSearchID) public constant returns (string, string, uint, address, string){ //  ListingName, description, price, owner,  ListingDateTime
         require(listingSearchID  > 0 && listingSearchID <= ListingID);
-
         return(allListings[listingSearchID].ListingName, allListings[listingSearchID].description, allListings[listingSearchID].price, allListings[listingSearchID].owner, allListings[listingSearchID].ListingDateTime);
     }
 
+    //Get the total number of listings in the marketplace
     function getTotalListings() public constant returns (uint){
         return ListingID;
     }
 
-    function getTotalListingPrices() public returns (uint[]){
-        return ListingPrices;
-    }
 
+    //*** Implemented these last 3 functions since there were issues with drizzle ***//
 
+    // Get all the listing IDs of the listings the user posted
     function getUserListings(address user) public constant returns (uint[]){
         return allUsers[user].listingsPosted;
     }
-
+    
+    // Get all the listing IDs of the listings the user sold
     function getUserListingsSold(address user) public constant returns (uint[]){
         return allUsers[user].listingsSold;
     }
 
+    // Get all the listing IDs of the listings the user purchased
     function getUserListingsPurchased(address user) public constant returns (uint[]){
         return allUsers[user].listingsPurchased;
     }
