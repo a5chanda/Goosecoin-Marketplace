@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Experience</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+        <script src="../../static/jquery.session.js"> </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    </head>
+    <body>
+        <form id="experienceForm" class="form-horizontal" action="/save">
+            <span id="addMore" class="glyphicon glyphicon-plus"> </span>
+            </br>
+            <input type="submit" class="btn primary-btn" value="Save"/>
+        </form>
+        <script type="text/javascript">
+    function getData(smartContractAddress){
+         var panelStr = 
+        `<div class="form-group">
+                <div>
+                    <label class="control-label col-sm-2" for="company">Company</label>
+                    <input id="company" value="{company}" readonly/>
+                </div>
+                <div>
+                    <label class="control-label col-sm-2"
+                    for="companyPublicKey">Company Public Key</label>
+                        <input id="companyPublicKey" value={companyPublicKey} readonly />
+                </div>
+
+                <div>
+                    <label class="control-label col-sm-2" for="title">Title</label>
+                    <input id="title" value={title} readonly />
+                </div>
+
+                <div>
+                    <label class="control-label col-sm-2" for="startDate">Start Date</label>
+                    <input type="text" id="startDate" class="date" value={startDate} readonly/>
+                </div>
+
+                <div>
+                    <label class="control-label col-sm-2" for="endDate">End Date</label>
+                    <input id="endDate" class="date" value={endDate} readonly />
+                </div>
+            </div>`
+
+        var data = [];
+        jQuery.ajax({
+            url: '/getExperience/sc_address='+String(smartContractAddress),
+            method: 'GET',
+            success: function(_data){
+                data = _data;
+                for(let datum of data){
+                    var panelStr_formatted = panelStr.replace('{company}', datum.company)
+                    panelStr_formatted = panelStr_formatted.replace('{companyPublicKey}', datum.companyPublicKey)
+                    panelStr_formatted = panelStr_formatted.replace('{title}', datum.title)
+                    panelStr_formatted = panelStr_formatted.replace('{startDate}', datum.startDate)
+                    panelStr_formatted = panelStr_formatted.replace('{endDate}', datum.endDate)
+                    var element = jQuery.parseHTML(panelStr_formatted);
+                    jQuery(element).insertBefore('#addMore');
+                }
+            },
+            error: function(){
+                data = [];
+            }, 
+        });
+    }
+    $(function () {
+    jQuery.noConflict();
+    const smartAddress = jQuery.session.get('publicAddress','')
+    getData(smartAddress);
+    jQuery(".date" ).datepicker({orientation: "top"});
+    jQuery('span.glyphicon.glyphicon-plus').click(function() {
+    var panelStr = 
+        `<div class="form-group">
+                <div>
+                    <label class="control-label col-sm-2" for="company">Company</label>
+                    <input id="company"/>
+                </div>
+                <div>
+                    <label class="control-label col-sm-2"
+                    for="companyPublicKey">Company Public Key</label>
+                    <input id="companyPublicKey"/>
+                </div>
+
+                <div>
+                    <label class="control-label col-sm-2" for="title">Title</label>
+                    <input id="title"/>
+                </div>
+
+                <div>
+                    <label class="control-label col-sm-2" for="startDate">Start Date</label>
+                    <input type="text" id="startDate" class="date" />
+                </div>
+
+                <div>
+                    <label class="control-label col-sm-2" for="endDate">End Date</label>
+                    <input id="endDate" class="date" />
+                </div>
+            </div>`
+        var panelElement = jQuery.parseHTML(panelStr);
+        jQuery(panelElement).insertBefore('#addMore');
+    });
+});
+        </script>
+    </body>
+</html>

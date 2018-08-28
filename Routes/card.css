@@ -1,0 +1,70 @@
+
+@media (min-width: 576px){
+  .card-deck {
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 10rem;
+    margin-bottom:20%;
+  }}
+  .card-img-top{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    filter: contrast(70%);
+    filter: saturate(200%);
+    overflow: hidden;
+    position: relative;
+    transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 56.25%; 
+    }
+    @media(min-width: 40rem) {
+      &::before {
+        padding-top: 66.6%; 
+      }
+    }
+  }
+  
+  .card__title {
+    color: @gray-dark;
+    font-family: Do Hyeon, cursive;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .card__text {
+    flex: 1 1 auto;
+    font-family: Do Hyeon, cursive;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .btn {
+    background-color: rgb(27, 138, 212);
+    border: 1px solid rgb(27, 138, 212);
+    font-family: Do Hyeon, cursive;
+    box-shadow: 2px 2px 4px rgb(128, 194, 238);
+    border-radius: 1rem;
+    color: @gray-dark;
+    padding: 0.75rem;
+  }
+  
+  .btn--block {
+    display: block;
+    width: 100%;
+    box-align: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }

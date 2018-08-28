@@ -1,0 +1,52 @@
+html{
+  background-color: #ffe6e6;
+}
+
+h1{
+  padding:0;
+  margin:0;
+  color:white;
+  position: relative;
+  font-size: 100px;
+  text-shadow: 1px 1px 5px;
+  left:260px;
+}
+
+#header{
+  color: white;
+  position: relative;
+  top:20px;
+  left: 290px;
+}
+
+#booton{
+  position:relative;
+  padding: 10px 24px;
+  top: 520px;
+  left: 260px;
+  cursor: pointer;
+}
+
+#booton:hover{
+  background-color:#b3b3b3;
+}
+
+.box{
+  border-radius: 25px;
+  position: absolute;
+  top: 25%;
+  left:250px;
+  border: 4px solid black;
+  background-color: white;
+  padding: 170px;
+  width: 400px;
+  height: 100px;
+}
+
+#svg{
+  margin:0;
+  padding:0;
+  position: absolute;
+  top:3%;
+  left:72%;
+}

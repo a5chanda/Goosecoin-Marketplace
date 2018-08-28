@@ -1,0 +1,148 @@
+
+@import url(../css/bootstrap.min.css);
+@import url(../css/owl.carousel.css);
+@import url(../css/animate.css);
+@import url(../css/magnific-popup.css);
+@import url(../css/jquery-ui.min.css);
+@import url(../css/nice-select.css);
+@import url(../css/font-awesome.min.css);
+
+  body {
+    background: rgb(255, 208, 0);
+  }
+
+  h1{
+    font-family: Do Hyeon, cursive;
+    font-size: 130px;
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -250%);
+    text-shadow: 3px 3px 20px #ffffff;
+  }
+  
+  li{
+    font-family: Do Hyeon, cursive;
+  }
+  .header-area {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    position: relative;
+    z-index: 1;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 320px;
+    flex: 0 0 320px;
+    width: 320px;
+    max-width: 320px;
+    padding: 40px 35px;
+    }
+
+    .header-area {
+        height: 100%;
+        width: 190px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #211;
+        overflow-x: hidden;
+        padding-top: 100px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header-area {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 280px;
+        flex: 0 0 280px;
+        width: 280px;
+        max-width: 280px;
+        padding: 50px; } }
+    @media only screen and (max-width: 767px) {
+    .header-area {
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 320px;
+        flex: 0 0 320px;
+        width: 320px;
+        max-width: 320px;
+        position: fixed;
+        z-index: 4000;
+        top: 0;
+        left: -350px;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        display: block; } }
+    .header-area{
+      left: 0; }
+    .header-area .nav-close {
+      -webkit-transition-duration: 500ms;
+      transition-duration: 500ms;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 0;
+      right: 15px;
+      background-color: red;
+      text-align: center;
+      color: #fff;
+      line-height: 40px;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: #fbb710;
+      display: none; }
+
+    @media only screen and (max-width: 767px) {
+    .header-area .nav-close {
+          display: block; } }
+    .header-area .nav-close:hover {
+        background-color: #131212; }
+    .header-area {
+      margin-bottom: 100px;
+      display: block; }
+
+    .header-area .amado-nav li a {
+      font-size: 24px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+      padding: 40px 0;
+      display: block;
+      line-height: 0.9;
+      color: #ffffff;
+      font-weight: normal; }
+
+    .header-area .amado-nav li a::after {
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        width: 30px;
+        height: 3px;
+        position: absolute;
+        top: 50%;
+        margin-top: -1.5px;
+        left: -150px;
+        background-color: #ca0f6c;
+        z-index: 10;
+        content: ''; }
+
+    .header-area .amado-nav li a:hover, .header-area .amado-nav li a:focus {
+        color: #ca0f6c; }
+
+    .header-area .amado-nav li:hover a::after, .header-area .amado-nav li:focus a::after {
+      left: -75px; }
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .header-area .amado-nav li:hover a::after, .header-area .amado-nav li:focus a::after {
+          left: -50px; } }
+
+    .header-area .amado-nav li.active a::after {
+      left: -75px; }
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .header-area .amado-nav li.active a::after {
+          left: -50px; } }
+
+    .header-area .amado-btn-group .amado-btn {
+      width: 160px;
+      display: block; }
+    

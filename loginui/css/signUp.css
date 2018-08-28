@@ -1,0 +1,28 @@
+
+body, html{
+  height:100%;
+  margin: 0;
+}
+h1{
+  color: white;
+  text-align: center;
+}
+.bg{
+  background-image: url("../images/pic.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-container{
+  border:0px solid white;
+  padding: 50px 60px;
+  margin-top: 20vh;
+  -webkit-box-shadow: -1px 2px 51px 14px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 2px 51px 14px rgba(0,0,0,0.75);
+  box-shadow: -1px 2px 51px 14px rgba(0,0,0,0.75);
+}
+label{
+  color: white;
+}
