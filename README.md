@@ -5,7 +5,7 @@
 
 
 
-Goosecoin is an Ethereum Marketplace that incorporates ethereum to authenticate transactios between buyers and sellers. This web app utilizes smart contracts which to enroll users and add listings (items) for selling. These listings have an id that will allow other users to find it and buy it from the seller. The vision of the application is to serve as a decentralized-classifieds system targeted towards university students. Moreover, students will be able to utilize Goosecoin as a universal currency amongst other universities and list items they wish to sell within the application.
+Goosecoin is an Ethereum Marketplace that incorporates ethereum to authenticate transactios between buyers and sellers. This web app utilizes smart contracts which to enroll users and add listings (items) for selling. These listings have an id that will allow other users to find it and buy it from the seller. The vision of the application is to serve as a decentralized-classifieds system targeted towards university students. Moreover, students will be able to utilize Goosecoin as a universal currency(ERC token) amongst other universities and list items they wish to sell within the application.
 
 
 *** This application is far from complete and can only do very basic transactions thus far within the UI. However, the backend smart contract is more capabale of complicated transactions which haven't been implemented into the front end as of yet.
