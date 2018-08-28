@@ -54,7 +54,7 @@ The main page consists of listings that the user may be interested in. This is a
 
 ### Enroll
 
-Users are entered into  Goosecoin Marketplace. The information that they must include are first name, last name,email address.
+Users are entered into  Goosecoin Marketplace. The information that they must include are first name, last name,email address. The User must enroll into the contract before they can conduct any transactions or add any listings.
 
 
 ### Account Info
