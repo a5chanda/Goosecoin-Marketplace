@@ -1,7 +1,7 @@
 # Decentralized-Classifieds
 
 ## GOOSECOIN 
-![My image](https://github.com/a5chanda/Decentralized-Classifieds/blob/master/Routes/Goosecoin.png)
+![My image](https://github.com/a5chanda/Goosecoin-Marketplace/blob/master/Routes/Goosecoin.png)
 
 
 
@@ -47,7 +47,7 @@ npm run start
 
 ### Main-Page
 
-![My image](https://github.com/a5chanda/Decentralized-Classifieds/blob/master/Routes/Main.png)
+![My image](https://github.com/a5chanda/Goosecoin-Marketplace/blob/master/Routes/Main.png)
 
 The main page consists of listings that the user may be interested in. This is a mockup of what the app is going to look like in the near future as updates are made to the front end.
 
